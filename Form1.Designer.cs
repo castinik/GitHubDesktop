@@ -1,4 +1,4 @@
-﻿
+
 namespace GitHubDesktop
 {
     partial class Form1
@@ -108,6 +108,7 @@ namespace GitHubDesktop
             this.PullButton.TabIndex = 1;
             this.PullButton.Text = "Pull";
             this.PullButton.UseVisualStyleBackColor = true;
+            this.PullButton.Click += new System.EventHandler(this.PullButton_Click);
             // 
             // AddFileButton
             // 

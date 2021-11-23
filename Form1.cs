@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,21 +17,6 @@ namespace GitHubDesktop
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void BrowseButton_Click(object sender, EventArgs e)
-        {
-            folderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyDocuments;
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
-                WorkingDirectoryLabel.Text = folderBrowserDialog1.SelectedPath;
-            CommandPath = MooveToWorkingDirectory();
-        }
-
-        private void StatusButton_Click(object sender, EventArgs e)
-        {
-            Process process = MakeCMDProcess(CommandPath + " && git status");
-            process.Start();
-            PrintStatus(process);
         }
 
         public string MooveToWorkingDirectory()
@@ -66,7 +51,33 @@ namespace GitHubDesktop
                 outp += process.StandardOutput.ReadToEnd();
             DisplayStatus.Text = outp;
         }
+        
+        private bool CheckWorkingArea() 
+        {
+        	string path = MooveToWorkingDirectory();
+        	using (Process process = MakeCMDProcess(path)) 
+        	{
+        		process.Start();
+        		if(folderBrowserDialog1.)
+        	}
+        	if()
+        }
+        
+        private void BrowseButton_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyDocuments;
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                WorkingDirectoryLabel.Text = folderBrowserDialog1.SelectedPath;
+            CommandPath = MooveToWorkingDirectory();
+        }
 
+        private void StatusButton_Click(object sender, EventArgs e)
+        {
+            Process process = MakeCMDProcess(CommandPath + " && git status");
+            process.Start();
+            PrintStatus(process);
+        }
+        
         private void AddFileButton_Click(object sender, EventArgs e)
         {
             if(FileSelectedLabel.Text.Length == 0)
@@ -87,6 +98,11 @@ namespace GitHubDesktop
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 FileSelectedLabel.Text = openFileDialog1.SafeFileName;
+        }
+        
+        private void PullButton_Click(object sender, EventArgs e) 
+        {
+        	
         }
     }
 }
