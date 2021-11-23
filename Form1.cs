@@ -54,9 +54,19 @@ namespace GitHubDesktop
         
         private bool CheckWorkingArea() 
         {
-            if (CommandPath.Length == 0)
+            if (string.IsNullOrEmpty(CommandPath))
             {
                 MessageBox.Show("Please choose or make a working directory");
+                return false;
+            }
+            return true;
+        }
+
+        private bool CheckFileSelected(Label fileSelected)
+        {
+            if (string.IsNullOrEmpty(fileSelected.Text))
+            {
+                MessageBox.Show("Please choose a file");
                 return false;
             }
             return true;
@@ -66,7 +76,11 @@ namespace GitHubDesktop
         {
             folderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyDocuments;
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
                 WorkingDirectoryLabel.Text = folderBrowserDialog1.SelectedPath;
+                string selPath = folderBrowserDialog1.SelectedPath;
+                InitLabel.Text = selPath.Substring(selPath.LastIndexOf('\\'));
+            }
             CommandPath = MooveToWorkingDirectory();
         }
 
@@ -81,11 +95,9 @@ namespace GitHubDesktop
         
         private void AddFileButton_Click(object sender, EventArgs e)
         {
-            if(FileSelectedLabel.Text.Length == 0)
-            {
-                FileSelectedLabel.Text = "Please select a file";
+
+            if(!CheckFileSelected(FileSelectedLabel))
                 return;
-            }
             string fileName = FileSelectedLabel.Text;
             using (Process process = MakeCMDProcess(CommandPath + " && git add " + fileName))
             {
@@ -103,15 +115,32 @@ namespace GitHubDesktop
         
         private void PullButton_Click(object sender, EventArgs e) 
         {
-            if (!CheckWorkingArea())
-                return;
             string branch = BranchTextBox.Text;
             string surgent = SurgentTextBox.Text;
+            if (!CheckWorkingArea() || (string.IsNullOrEmpty(branch) || string.IsNullOrEmpty(surgent)))
+                return;
             using (Process process = MakeCMDProcess(CommandPath + " && git pull " + surgent + " " + branch))
             {
                 process.Start();
                 PrintStatus(process);
             }
+        }
+
+        private void InitButton_Click(object sender, EventArgs e)
+        {
+            if (!CheckWorkingArea())
+                return;
+            using (Process process = MakeCMDProcess(CommandPath + " && git init"))
+            {
+                process.Start();
+                PrintStatus(process);
+            }
+        }
+
+        private void PushButton_Click(object sender, EventArgs e)
+        {
+            string commit = CommitTextBox.Text;
+
         }
     }
 }

@@ -45,29 +45,33 @@ namespace GitHubDesktop
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.UseGitPage = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.SelectFileButton = new System.Windows.Forms.Button();
-            this.FileSelectedLabel = new System.Windows.Forms.Label();
-            this.RemoveFileButton = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.SurgentTextBox = new System.Windows.Forms.TextBox();
+            this.BranchTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.StagePage = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.SelectFileButton = new System.Windows.Forms.Button();
+            this.FileSelectedLabel = new System.Windows.Forms.Label();
+            this.RemoveFileButton = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.InitLabel = new System.Windows.Forms.Label();
+            this.InitButton = new System.Windows.Forms.Button();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.BranchTextBox = new System.Windows.Forms.TextBox();
-            this.SurgentTextBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.UseGitPage.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.StagePage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // StatusButton
@@ -82,9 +86,9 @@ namespace GitHubDesktop
             // 
             // BrowseButton
             // 
-            this.BrowseButton.Location = new System.Drawing.Point(17, 15);
+            this.BrowseButton.Location = new System.Drawing.Point(17, 16);
             this.BrowseButton.Name = "BrowseButton";
-            this.BrowseButton.Size = new System.Drawing.Size(104, 27);
+            this.BrowseButton.Size = new System.Drawing.Size(75, 44);
             this.BrowseButton.TabIndex = 2;
             this.BrowseButton.Text = "Browse";
             this.BrowseButton.UseVisualStyleBackColor = true;
@@ -92,9 +96,9 @@ namespace GitHubDesktop
             // 
             // CloneButton
             // 
-            this.CloneButton.Location = new System.Drawing.Point(17, 48);
+            this.CloneButton.Location = new System.Drawing.Point(17, 97);
             this.CloneButton.Name = "CloneButton";
-            this.CloneButton.Size = new System.Drawing.Size(104, 27);
+            this.CloneButton.Size = new System.Drawing.Size(75, 23);
             this.CloneButton.TabIndex = 3;
             this.CloneButton.Text = "Clone";
             this.CloneButton.UseVisualStyleBackColor = true;
@@ -107,6 +111,7 @@ namespace GitHubDesktop
             this.PushButton.TabIndex = 0;
             this.PushButton.Text = "Push";
             this.PushButton.UseVisualStyleBackColor = true;
+            this.PushButton.Click += new System.EventHandler(this.PushButton_Click);
             // 
             // PullButton
             // 
@@ -139,7 +144,7 @@ namespace GitHubDesktop
             // 
             // AddSurgentButton
             // 
-            this.AddSurgentButton.Location = new System.Drawing.Point(17, 82);
+            this.AddSurgentButton.Location = new System.Drawing.Point(17, 126);
             this.AddSurgentButton.Name = "AddSurgentButton";
             this.AddSurgentButton.Size = new System.Drawing.Size(178, 23);
             this.AddSurgentButton.TabIndex = 4;
@@ -184,7 +189,6 @@ namespace GitHubDesktop
             // 
             this.CommitTextBox.Location = new System.Drawing.Point(166, 42);
             this.CommitTextBox.Name = "CommitTextBox";
-            this.CommitTextBox.ReadOnly = true;
             this.CommitTextBox.Size = new System.Drawing.Size(385, 23);
             this.CommitTextBox.TabIndex = 5;
             // 
@@ -212,45 +216,49 @@ namespace GitHubDesktop
             this.UseGitPage.Text = "Use Git";
             this.UseGitPage.UseVisualStyleBackColor = true;
             // 
-            // panel2
+            // panel3
             // 
-            this.panel2.Controls.Add(this.SelectFileButton);
-            this.panel2.Controls.Add(this.FileSelectedLabel);
-            this.panel2.Controls.Add(this.AddFileButton);
-            this.panel2.Controls.Add(this.AddAllButton);
-            this.panel2.Controls.Add(this.RemoveFileButton);
-            this.panel2.Location = new System.Drawing.Point(3, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(554, 87);
-            this.panel2.TabIndex = 8;
+            this.panel3.Controls.Add(this.SurgentTextBox);
+            this.panel3.Controls.Add(this.BranchTextBox);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.PullButton);
+            this.panel3.Location = new System.Drawing.Point(3, 78);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(554, 83);
+            this.panel3.TabIndex = 8;
             // 
-            // SelectFileButton
+            // SurgentTextBox
             // 
-            this.SelectFileButton.Location = new System.Drawing.Point(3, 57);
-            this.SelectFileButton.Name = "SelectFileButton";
-            this.SelectFileButton.Size = new System.Drawing.Size(139, 23);
-            this.SelectFileButton.TabIndex = 6;
-            this.SelectFileButton.Text = "Select a file";
-            this.SelectFileButton.UseVisualStyleBackColor = true;
-            this.SelectFileButton.Click += new System.EventHandler(this.SelectFileButton_Click);
+            this.SurgentTextBox.Location = new System.Drawing.Point(319, 52);
+            this.SurgentTextBox.Name = "SurgentTextBox";
+            this.SurgentTextBox.Size = new System.Drawing.Size(232, 23);
+            this.SurgentTextBox.TabIndex = 5;
             // 
-            // FileSelectedLabel
+            // BranchTextBox
             // 
-            this.FileSelectedLabel.AutoSize = true;
-            this.FileSelectedLabel.Location = new System.Drawing.Point(148, 61);
-            this.FileSelectedLabel.Name = "FileSelectedLabel";
-            this.FileSelectedLabel.Size = new System.Drawing.Size(106, 15);
-            this.FileSelectedLabel.TabIndex = 5;
-            this.FileSelectedLabel.Text = "File selected: None";
+            this.BranchTextBox.Location = new System.Drawing.Point(50, 52);
+            this.BranchTextBox.Name = "BranchTextBox";
+            this.BranchTextBox.Size = new System.Drawing.Size(209, 23);
+            this.BranchTextBox.TabIndex = 4;
             // 
-            // RemoveFileButton
+            // label4
             // 
-            this.RemoveFileButton.Location = new System.Drawing.Point(278, 30);
-            this.RemoveFileButton.Name = "RemoveFileButton";
-            this.RemoveFileButton.Size = new System.Drawing.Size(273, 23);
-            this.RemoveFileButton.TabIndex = 4;
-            this.RemoveFileButton.Text = "Remove file";
-            this.RemoveFileButton.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(267, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 15);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Surgent: ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 15);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Branch: ";
             // 
             // panel1
             // 
@@ -282,18 +290,60 @@ namespace GitHubDesktop
             this.StagePage.Text = "Set Stage Git";
             this.StagePage.UseVisualStyleBackColor = true;
             // 
-            // fileSystemWatcher1
+            // panel2
             // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.NotifyFilter = System.IO.NotifyFilters.DirectoryName;
-            this.fileSystemWatcher1.SynchronizingObject = this;
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.SelectFileButton);
+            this.panel2.Controls.Add(this.FileSelectedLabel);
+            this.panel2.Controls.Add(this.AddFileButton);
+            this.panel2.Controls.Add(this.AddAllButton);
+            this.panel2.Controls.Add(this.RemoveFileButton);
+            this.panel2.Location = new System.Drawing.Point(3, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(554, 87);
+            this.panel2.TabIndex = 8;
             // 
-            // openFileDialog1
+            // label6
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(148, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 15);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "File selected: ";
+            // 
+            // SelectFileButton
+            // 
+            this.SelectFileButton.Location = new System.Drawing.Point(3, 57);
+            this.SelectFileButton.Name = "SelectFileButton";
+            this.SelectFileButton.Size = new System.Drawing.Size(139, 23);
+            this.SelectFileButton.TabIndex = 6;
+            this.SelectFileButton.Text = "Select a file";
+            this.SelectFileButton.UseVisualStyleBackColor = true;
+            this.SelectFileButton.Click += new System.EventHandler(this.SelectFileButton_Click);
+            // 
+            // FileSelectedLabel
+            // 
+            this.FileSelectedLabel.AutoSize = true;
+            this.FileSelectedLabel.Location = new System.Drawing.Point(231, 61);
+            this.FileSelectedLabel.Name = "FileSelectedLabel";
+            this.FileSelectedLabel.Size = new System.Drawing.Size(0, 15);
+            this.FileSelectedLabel.TabIndex = 5;
+            // 
+            // RemoveFileButton
+            // 
+            this.RemoveFileButton.Location = new System.Drawing.Point(278, 30);
+            this.RemoveFileButton.Name = "RemoveFileButton";
+            this.RemoveFileButton.Size = new System.Drawing.Size(273, 23);
+            this.RemoveFileButton.TabIndex = 4;
+            this.RemoveFileButton.Text = "Remove file";
+            this.RemoveFileButton.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.InitLabel);
+            this.tabPage1.Controls.Add(this.InitButton);
             this.tabPage1.Controls.Add(this.AddSurgentButton);
             this.tabPage1.Controls.Add(this.BrowseButton);
             this.tabPage1.Controls.Add(this.CloneButton);
@@ -305,49 +355,43 @@ namespace GitHubDesktop
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // panel3
+            // label5
             // 
-            this.panel3.Controls.Add(this.SurgentTextBox);
-            this.panel3.Controls.Add(this.BranchTextBox);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.PullButton);
-            this.panel3.Location = new System.Drawing.Point(3, 78);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(554, 83);
-            this.panel3.TabIndex = 8;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(98, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(227, 15);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Use Browse to choose a working directory";
             // 
-            // label3
+            // InitLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Branch: ";
+            this.InitLabel.AutoSize = true;
+            this.InitLabel.Location = new System.Drawing.Point(98, 41);
+            this.InitLabel.Name = "InitLabel";
+            this.InitLabel.Size = new System.Drawing.Size(264, 15);
+            this.InitLabel.TabIndex = 6;
+            this.InitLabel.Text = "Use Browse to choose or create a directory to init";
             // 
-            // label4
+            // InitButton
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(267, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Surgent: ";
+            this.InitButton.Location = new System.Drawing.Point(17, 66);
+            this.InitButton.Name = "InitButton";
+            this.InitButton.Size = new System.Drawing.Size(537, 23);
+            this.InitButton.TabIndex = 5;
+            this.InitButton.Text = "Init";
+            this.InitButton.UseVisualStyleBackColor = true;
+            this.InitButton.Click += new System.EventHandler(this.InitButton_Click);
             // 
-            // BranchTextBox
+            // fileSystemWatcher1
             // 
-            this.BranchTextBox.Location = new System.Drawing.Point(50, 52);
-            this.BranchTextBox.Name = "BranchTextBox";
-            this.BranchTextBox.Size = new System.Drawing.Size(209, 23);
-            this.BranchTextBox.TabIndex = 4;
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.NotifyFilter = System.IO.NotifyFilters.DirectoryName;
+            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // SurgentTextBox
+            // openFileDialog1
             // 
-            this.SurgentTextBox.Location = new System.Drawing.Point(319, 52);
-            this.SurgentTextBox.Name = "SurgentTextBox";
-            this.SurgentTextBox.Size = new System.Drawing.Size(232, 23);
-            this.SurgentTextBox.TabIndex = 5;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -364,15 +408,16 @@ namespace GitHubDesktop
             this.tabControl1.ResumeLayout(false);
             this.UseGitPage.ResumeLayout(false);
             this.UseGitPage.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.StagePage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,6 +456,10 @@ namespace GitHubDesktop
         private System.Windows.Forms.TextBox BranchTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label InitLabel;
+        private System.Windows.Forms.Button InitButton;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
