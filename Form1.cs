@@ -54,13 +54,12 @@ namespace GitHubDesktop
         
         private bool CheckWorkingArea() 
         {
-        	string path = MooveToWorkingDirectory();
-        	using (Process process = MakeCMDProcess(path)) 
-        	{
-        		process.Start();
-        		if(folderBrowserDialog1.)
-        	}
-        	if()
+            if (CommandPath.Length == 0)
+            {
+                MessageBox.Show("Please choose or make a working directory");
+                return false;
+            }
+            return true;
         }
         
         private void BrowseButton_Click(object sender, EventArgs e)
@@ -73,9 +72,11 @@ namespace GitHubDesktop
 
         private void StatusButton_Click(object sender, EventArgs e)
         {
-            Process process = MakeCMDProcess(CommandPath + " && git status");
-            process.Start();
-            PrintStatus(process);
+            using (Process process = MakeCMDProcess(CommandPath + " && git status"))
+            {
+                process.Start();
+                PrintStatus(process);
+            }
         }
         
         private void AddFileButton_Click(object sender, EventArgs e)
@@ -102,7 +103,15 @@ namespace GitHubDesktop
         
         private void PullButton_Click(object sender, EventArgs e) 
         {
-        	
+            if (!CheckWorkingArea())
+                return;
+            string branch = BranchTextBox.Text;
+            string surgent = SurgentTextBox.Text;
+            using (Process process = MakeCMDProcess(CommandPath + " && git pull " + surgent + " " + branch))
+            {
+                process.Start();
+                PrintStatus(process);
+            }
         }
     }
 }
