@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Utente\\Documents\\Programmazione\\C#\\WindowsForms\\GitHubDesktop\\GitHubDesktop.csproj",
+      "projectUniqueName": "C:\\Users\\Utente\\Documents\\GitHub\\GitHubDesktop\\GitHubDesktop.csproj",
       "projectName": "GitHubDesktop",
-      "projectPath": "C:\\Users\\Utente\\Documents\\Programmazione\\C#\\WindowsForms\\GitHubDesktop\\GitHubDesktop.csproj",
+      "projectPath": "C:\\Users\\Utente\\Documents\\GitHub\\GitHubDesktop\\GitHubDesktop.csproj",
       "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Utente\\Documents\\Programmazione\\C#\\WindowsForms\\GitHubDesktop\\obj\\",
+      "outputPath": "C:\\Users\\Utente\\Documents\\GitHub\\GitHubDesktop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
