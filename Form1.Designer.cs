@@ -105,7 +105,7 @@ namespace GitHubDesktop
             // 
             // PushButton
             // 
-            this.PushButton.Location = new System.Drawing.Point(3, 6);
+            this.PushButton.Location = new System.Drawing.Point(3, 7);
             this.PushButton.Name = "PushButton";
             this.PushButton.Size = new System.Drawing.Size(548, 23);
             this.PushButton.TabIndex = 0;
@@ -115,7 +115,7 @@ namespace GitHubDesktop
             // 
             // PullButton
             // 
-            this.PullButton.Location = new System.Drawing.Point(3, 13);
+            this.PullButton.Location = new System.Drawing.Point(3, 38);
             this.PullButton.Name = "PullButton";
             this.PullButton.Size = new System.Drawing.Size(548, 23);
             this.PullButton.TabIndex = 1;
@@ -187,7 +187,7 @@ namespace GitHubDesktop
             // 
             // CommitTextBox
             // 
-            this.CommitTextBox.Location = new System.Drawing.Point(166, 42);
+            this.CommitTextBox.Location = new System.Drawing.Point(166, 10);
             this.CommitTextBox.Name = "CommitTextBox";
             this.CommitTextBox.Size = new System.Drawing.Size(385, 23);
             this.CommitTextBox.TabIndex = 5;
@@ -218,11 +218,12 @@ namespace GitHubDesktop
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.SurgentTextBox);
+            this.panel3.Controls.Add(this.CommitTextBox);
             this.panel3.Controls.Add(this.BranchTextBox);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.PullButton);
             this.panel3.Location = new System.Drawing.Point(3, 78);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(554, 83);
@@ -230,14 +231,14 @@ namespace GitHubDesktop
             // 
             // SurgentTextBox
             // 
-            this.SurgentTextBox.Location = new System.Drawing.Point(319, 52);
+            this.SurgentTextBox.Location = new System.Drawing.Point(319, 50);
             this.SurgentTextBox.Name = "SurgentTextBox";
             this.SurgentTextBox.Size = new System.Drawing.Size(232, 23);
             this.SurgentTextBox.TabIndex = 5;
             // 
             // BranchTextBox
             // 
-            this.BranchTextBox.Location = new System.Drawing.Point(50, 52);
+            this.BranchTextBox.Location = new System.Drawing.Point(50, 48);
             this.BranchTextBox.Name = "BranchTextBox";
             this.BranchTextBox.Size = new System.Drawing.Size(209, 23);
             this.BranchTextBox.TabIndex = 4;
@@ -245,7 +246,7 @@ namespace GitHubDesktop
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(267, 55);
+            this.label4.Location = new System.Drawing.Point(267, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 15);
             this.label4.TabIndex = 3;
@@ -254,7 +255,7 @@ namespace GitHubDesktop
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 55);
+            this.label3.Location = new System.Drawing.Point(3, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 15);
             this.label3.TabIndex = 2;
@@ -262,9 +263,8 @@ namespace GitHubDesktop
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.CommitTextBox);
             this.panel1.Controls.Add(this.PushButton);
+            this.panel1.Controls.Add(this.PullButton);
             this.panel1.Location = new System.Drawing.Point(3, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(554, 71);
@@ -273,7 +273,7 @@ namespace GitHubDesktop
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 45);
+            this.label2.Location = new System.Drawing.Point(2, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(159, 15);
             this.label2.TabIndex = 6;
@@ -411,7 +411,6 @@ namespace GitHubDesktop
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.StagePage.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

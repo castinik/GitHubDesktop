@@ -19,6 +19,9 @@ namespace GitHubDesktop
             InitializeComponent();
         }
 
+        ////
+        // START CONTROLS AREA //
+        ////
         public string MooveToWorkingDirectory()
         {
             string path = WorkingDirectoryLabel.Text;
@@ -67,7 +70,13 @@ namespace GitHubDesktop
                 outp += process.StandardOutput.ReadToEnd();
             DisplayStatus.Text = outp;
         }
+        ////
+        // END CONTROLS AREA //
+        ////
         
+        ////
+        // START CHECKING AREA //
+        ////
         private bool CheckWorkingArea() 
         {
             if (string.IsNullOrEmpty(CommandPath))
@@ -87,7 +96,24 @@ namespace GitHubDesktop
             }
             return true;
         }
-        
+
+        private bool CheckField(TextBox field)
+        {
+            if (string.IsNullOrEmpty(field.Text))
+            {
+                MessageBox.Show("Please wrote a message");
+                return false;
+            }
+            return true;
+        }
+        ////
+        // END CHECKING AREA //
+        ////
+
+        ////
+        // START BUTTONS AREA //
+        ////
+        //# control buttons
         private void BrowseButton_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyDocuments;
@@ -100,13 +126,16 @@ namespace GitHubDesktop
             CommandPath = MooveToWorkingDirectory();
         }
 
+        private void SelectFileButton_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                FileSelectedLabel.Text = openFileDialog1.SafeFileName;
+        }
+
+        //# git buttons
         private void StatusButton_Click(object sender, EventArgs e)
         {
-            using (Process process = MakeCMDProcess(CommandPath + " && git status"))
-            {
-                process.Start();
-                PrintStatus(process);
-            }
+            Command("git status");
         }
         
         private void AddFileButton_Click(object sender, EventArgs e)
@@ -115,18 +144,8 @@ namespace GitHubDesktop
             if(!CheckFileSelected(FileSelectedLabel))
                 return;
             string fileName = FileSelectedLabel.Text;
-            using (Process process = MakeCMDProcess(CommandPath + " && git add " + fileName))
-            {
-                process.Start();
-                PrintStatus(process);
-            }
+            Command("git add " + fileName);
             StatusButton_Click(sender, e);
-        }
-
-        private void SelectFileButton_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                FileSelectedLabel.Text = openFileDialog1.SafeFileName;
         }
         
         private void PullButton_Click(object sender, EventArgs e) 
@@ -135,31 +154,37 @@ namespace GitHubDesktop
             string surgent = SurgentTextBox.Text;
             if (!CheckWorkingArea() || (string.IsNullOrEmpty(branch) || string.IsNullOrEmpty(surgent)))
                 return;
-            using (Process process = MakeCMDProcess(CommandPath + " && git pull " + surgent + " " + branch))
-            {
-                process.Start();
-                PrintStatus(process);
-            }
+            Command("git pull " + surgent + " " + branch);
         }
 
         private void InitButton_Click(object sender, EventArgs e)
         {
             if (!CheckWorkingArea())
                 return;
-            using (Process process = MakeCMDProcess(CommandPath + " && git init"))
-            {
-                process.Start();
-                PrintStatus(process);
-            }
+            Command("git init");
         }
 
         private void PushButton_Click(object sender, EventArgs e)
         {
-        	string branch = BranchTextBox.Text;
-        	string surgent = SurgentTextBox.Text;
-            string commit = CommitTextBox.Text;
-            string comCom = "git commit -m " + commit ;
-            Command()
+            if (!CheckWorkingArea())
+                return;    
+                        
+            List<TextBox> checks = new List<TextBox>()
+            {
+                BranchTextBox, 
+                SurgentTextBox,
+                CommitTextBox
+            };
+            foreach(TextBox text in checks)
+            {
+                if (!CheckField(text))
+                    return;
+            }
+            Command("git commit -m " + CommitTextBox.Text);
+            Command("git push " + SurgentTextBox.Text + " " + BranchTextBox.Text);
         }
+        ////
+        // END BUTTONS AREA //
+        ////
     }
 }
