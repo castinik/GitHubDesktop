@@ -43,7 +43,23 @@ namespace GitHubDesktop
             process.StartInfo.RedirectStandardInput = true;
             return process;
         }
-
+        
+        public void Command(string command, bool output = true)
+        {
+        	using(Process process = new Process()){
+        		process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            	process.StartInfo.FileName = "cmd.exe";
+            	process.StartInfo.Arguments = "/C " + CommandPath + " && " + command;
+            	process.StartInfo.UseShellExecute = false;
+        		process.StartInfo.CreateNoWindow = true;
+            	process.StartInfo.RedirectStandardOutput = true;
+            	process.StartInfo.RedirectStandardInput = true;
+            	process.Start();
+            	if (output)
+            		PrintStatus(process);
+        	}
+        }
+        
         public void PrintStatus(Process process)
         {
             string outp = "";
@@ -139,8 +155,11 @@ namespace GitHubDesktop
 
         private void PushButton_Click(object sender, EventArgs e)
         {
+        	string branch = BranchTextBox.Text;
+        	string surgent = SurgentTextBox.Text;
             string commit = CommitTextBox.Text;
-
+            string comCom = "git commit -m " + commit ;
+            Command()
         }
     }
 }
