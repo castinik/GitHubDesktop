@@ -1,0 +1,73 @@
+
+######
+### Esegui un comando in CMD ###
+######         
+
+	    //crating the Process object "process".
+            Process process = new Process();
+
+            //creating the ProcessStartInfo object "startInfo".
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            
+            //hidden the process on CMD.
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+            //give the name of application that we wuld run.
+            startInfo.FileName = "cmd.exe";
+
+            //give the argument to startInfo object (the command that we wuld run).
+            startInfo.Arguments = "/C cd \\Users\\Utente\\Desktop && mkdir prova";
+
+            process.StartInfo = startInfo;
+            process.Start();
+
+######
+### Cattura l'output del CMD ###
+###### 
+
+
+     	    //crating the Process object "process".
+            Process process = new Process();
+
+            //creating the ProcessStartInfo object "startInfo".
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+
+            //hidden the process on CMD.
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+            //give the name of application that we wuld run.
+            startInfo.FileName = "cmd.exe";
+
+            //give the argument to startInfo object (the command that we wuld run).
+            startInfo.Arguments = "/C git status";
+
+            startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = true;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardInput = true;
+
+            process.StartInfo = startInfo;
+            process.Start();
+
+            string outp = "";
+
+            while (!process.HasExited)
+            {
+                outp += process.StandardOutput.ReadToEnd();
+            }
+            DisplayStatus.Text = outp;
+
+
+######
+### Scegli la cartella ###
+######
+
+
+            folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop;
+
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBox1.Text = folderBrowserDialog1.SelectedPath;
+            }
+
+		
