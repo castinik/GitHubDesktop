@@ -5,9 +5,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GitHubDesktop
@@ -15,15 +12,24 @@ namespace GitHubDesktop
     public partial class Form1 : Form
     {
         private string CommandPath { get; set; }
+        private string WorkingPath { get; set; }
         public Form1()
         {
             InitializeComponent();
-            //SetUser();
         }
 
         ////
         // START CONTROLS AREA //
         ////
+        
+        public void PrintBranchs()
+        {
+            string branchs = Command("git branch");
+            if (branchs == "")
+                DisplayStatus.Text = "* master";
+            else
+                DisplayStatus.Text = branchs;
+        }
         public string MooveToWorkingDirectory()
         {
             string path = WorkingDirectoryLabel.Text;
@@ -40,12 +46,12 @@ namespace GitHubDesktop
         {
             string firstCommand = "/C " + CommandPath + " && ";
         	using(Process process = new Process()){
-        		process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            	process.StartInfo.FileName = "cmd.exe";
                 if (!gitCommand)
                     process.StartInfo.Arguments = command;
                 else
                     process.StartInfo.Arguments = firstCommand + command;
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process.StartInfo.FileName = "cmd.exe";
                 process.StartInfo.UseShellExecute = false;
         		process.StartInfo.CreateNoWindow = true;
             	process.StartInfo.RedirectStandardOutput = true;
@@ -59,8 +65,12 @@ namespace GitHubDesktop
         public string PrintStatus(Process process, bool print)
         {
             string outp = "";
+            string err = "";
             while (!process.HasExited)
+            {
                 outp += process.StandardOutput.ReadToEnd();
+
+            }
             if (print)
             {
                 DisplayStatus.Text = outp;
@@ -73,10 +83,15 @@ namespace GitHubDesktop
         private void SetCurrentBranch()
         {
             string outp = Command("git branch", false);
-            outp = outp.Substring(outp.IndexOf('*') + 2);
+            if (outp == "")
+            {
+                StatusBranchNameLabel.Text = "master";
+                return;
+            }
             try
             {
-                outp = outp.Remove(outp.IndexOf(' '));
+                outp = outp.Substring(outp.IndexOf('*') + 2);
+                outp = outp.Remove(outp.IndexOf('\n'));
                 StatusBranchNameLabel.Text = outp;
             }
             catch
@@ -87,13 +102,15 @@ namespace GitHubDesktop
 
         private void SetUser()
         {
-            UserNameLabel.Text = Command("git config --global --get-all user.name", false, false);
-            UserEmailLabel.Text = Command("git config --global --get-all user.email", false, false);
+            UserNameLabel.Text = Command("git config --global --get-all user.name", false);
+            UserEmailLabel.Text = Command("git config --global --get-all user.email", false);
         }
         ////
         // END CONTROLS AREA //
         ////
-
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
         ////
         // START CHECKING AREA //
         ////
@@ -141,14 +158,32 @@ namespace GitHubDesktop
             StatusInitLabel.Text = "OK";
             return true;
         }
+
+        private bool CheckFirstCommit()
+        {
+            if(Command("git log") == "")
+            {
+                DisplayStatus.Text = "Please make the first commit on branch master\nbefore creating a new one";
+                return false;
+            }
+            return true;
+        }
         ////
         // END CHECKING AREA //
         ////
-
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
         ////
         // START BUTTONS AREA //
         ////
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
         //# control buttons
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
         private void BrowseButton_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyDocuments;
@@ -159,106 +194,157 @@ namespace GitHubDesktop
                 InitLabel.Text = selPath.Substring(selPath.LastIndexOf('\\') + 1);
                 CommandPath = MooveToWorkingDirectory();
             }
+            folderBrowserDialog1.Dispose();
+            folderBrowserDialog1.Reset();
             if (CheckInit())
                 SetCurrentBranch();
             SetUser();
         }
-
         private void SelectFileButton_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
                 FileSelectedLabel.Text = openFileDialog1.SafeFileName;
+                openFileDialog1.Dispose();
+                openFileDialog1.Reset();
+            }
         }
-
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
         //# git buttons
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        private void InitUserButton_Click(object sender, EventArgs e)
+        {
+            if (!CheckField(UserNameTextBox) || !CheckField(UserEmailTextBox)) return;
+            string name = UserNameTextBox.Text;
+            string email = UserEmailTextBox.Text;
+            Command("git config --global user.name " + name);
+            Command("git config --global user.email " + email);
+            SetUser();
+        }
         private void StatusButton_Click(object sender, EventArgs e)
         {
             if (!CheckWorkingArea()) return;
             Command("git status");
         }
-        
-        private void AddFileButton_Click(object sender, EventArgs e)
-        {
-            if(!CheckFileSelected(FileSelectedLabel) || !CheckWorkingArea()) return;
-            Command("git add " + FileSelectedLabel.Text);
-            Command("git status");
-        }
-        
-        private void PullButton_Click(object sender, EventArgs e) 
-        {
-            if (!CheckWorkingArea() || !CheckInit()) return;
-            if (!CheckField(SurgentTextBox)) return;
-            Command("git pull " + SurgentTextBox.Text);
-        }
-
         private void InitButton_Click(object sender, EventArgs e)
         {
             if (!CheckWorkingArea()) return;
             Command("git init");
+            CheckInit();
+            SetCurrentBranch();
         }
-
+        private void CloneButton_Click(object sender, EventArgs e)
+        {
+            if (!CheckWorkingArea() || !CheckField(UrlCloneTextBox)) return;
+            string url = UrlCloneTextBox.Text;
+            Command("git clone " + url);
+            url = url.Substring(url.LastIndexOf('/') + 1);
+            url = url.Remove(url.IndexOf('.'));
+            WorkingDirectoryLabel.Text = WorkingDirectoryLabel.Text + "\\" + url;
+            CommandPath = MooveToWorkingDirectory();
+            InitLabel.Text = url;
+            if(CheckInit())
+                SetCurrentBranch();
+            Command("git status");
+        }
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        private void PullButton_Click(object sender, EventArgs e)
+        {
+            if (!CheckWorkingArea() || !CheckInit() || !CheckField(SurgentTextBox)) return;
+            Command("git pull " + SurgentTextBox.Text);
+        }
         private void PushButton_Click(object sender, EventArgs e)
         {
             if (!CheckWorkingArea() || !CheckInit()) return;
-            List<TextBox> checks = new List<TextBox>() {
-                BranchTextBox, 
-                SurgentTextBox };
-            foreach(TextBox text in checks)
+            SetCurrentBranch();
+            if (StatusBranchNameLabel.Text != BranchTextBox.Text)
+            {
+                DisplayStatus.Text = "Please make sure you are working in the right branch";
+                return;
+            }
+            List<TextBox> checks = new List<TextBox>() {BranchTextBox, SurgentTextBox };
+            foreach (TextBox text in checks)
                 if (!CheckField(text)) return;
             Command("git push " + SurgentTextBox.Text + " " + BranchTextBox.Text);
+            DisplayStatus.Text = "pushed";
         }
-
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        private void AddFileButton_Click(object sender, EventArgs e)
+        {
+            if(!CheckFileSelected(FileSelectedLabel) || !CheckWorkingArea()) return;
+            string fileSelected = FileSelectedLabel.Text;
+            if (fileSelected.Contains(' '))
+                fileSelected = "\"" + fileSelected + "\"";
+            FileSelectedLabel.Text = "";
+            Command("git add " + fileSelected);
+            Command("git status");
+        }
         private void AddAllButton_Click(object sender, EventArgs e)
         {
             if (!CheckWorkingArea()) return;
+            FileSelectedLabel.Text = "";
             Command("git add .");
             Command("git status");
         }
-
         private void RemoveFileButton_Click(object sender, EventArgs e)
         {
             if (!CheckFileSelected(FileSelectedLabel) || !CheckWorkingArea()) return;
-            Command("git rm --cached " + FileSelectedLabel.Text);
+            string fileSelected = FileSelectedLabel.Text;
+            if (fileSelected.Contains(' '))
+                fileSelected = "\"" + fileSelected + "\"";
+            FileSelectedLabel.Text = "";
+            Command("git rm --cached " + fileSelected);
             Command("git status");
         }
-
+        private void CommitButton_Click(object sender, EventArgs e)
+        {
+            if (!CheckWorkingArea() || !CheckInit() || !CheckField(CommitTextBox)) return;
+            Command("git commit -m \"" + CommitTextBox.Text + "\"");
+        }
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
         private void AddSurgentButton_Click(object sender, EventArgs e)
         {
             if (!CheckWorkingArea() || !CheckField(AddNameRemoteTextBox) || !CheckField(UrlRemoteTextBox)) return;
             Command("git remote add " + AddNameRemoteTextBox.Text + " " + UrlRemoteTextBox.Text);
+            Command("git remote -v");
         }
-
-        private void CloneButton_Click(object sender, EventArgs e)
+        private void ViewSurgentButton_Click(object sender, EventArgs e)
         {
-            if (!CheckWorkingArea() || !CheckField(UrlCloneTextBox)) return;
-            Command("git clone " + UrlCloneTextBox.Text);
+            if (!CheckWorkingArea() || !CheckInit()) return;
+            Command("git remote -v");
         }
-
-        private void CommitButton_Click(object sender, EventArgs e)
-        {
-            if (!CheckWorkingArea() || !CheckInit() || !CheckField(CommitTextBox)) return;
-            Command("git commit -m " + CommitTextBox.Text);
-        }
-
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------
         private void NewBranchButton_Click(object sender, EventArgs e)
         {
-            if (!CheckWorkingArea() || !CheckInit() ||!CheckField(BranchNameTextBox)) return;
+            if (!CheckWorkingArea() || !CheckInit() ||!CheckField(BranchNameTextBox) || !CheckFirstCommit()) return;
             Command("git branch " + BranchNameTextBox.Text);
+            SetCurrentBranch();
+            PrintBranchs();
         }
-
         private void ViewBranchButton_Click(object sender, EventArgs e)
         {
             if (!CheckWorkingArea() || !CheckInit()) return;
-            Command("git branch");
+            PrintBranchs();
         }
-
         private void ChangeBranchButton_Click(object sender, EventArgs e)
         {
-            if (!CheckWorkingArea() || !CheckInit() || !CheckField(BranchNameTextBox)) return;
-            Command("git checkout " + BranchNameTextBox.Text);
+            if (!CheckWorkingArea() || !CheckInit() || !CheckField(BranchNameTextBox) || !CheckFirstCommit()) return;
+            string tryy = Command("git checkout " + BranchNameTextBox.Text);
             SetCurrentBranch();
+            PrintBranchs();
         }
-
         private void DeleteBranchButton_Click(object sender, EventArgs e)
         {
             if (!CheckWorkingArea() || !CheckInit() || !CheckField(BranchNameTextBox)) return;
@@ -268,12 +354,6 @@ namespace GitHubDesktop
                 return;
             }
             Command("git branch -d " + BranchNameTextBox.Text);
-        }
-
-        private void ViewSurgentButton_Click(object sender, EventArgs e)
-        {
-            if (!CheckWorkingArea() || !CheckInit()) return;
-            Command("git remote -v");
         }
         ////
         // END BUTTONS AREA //
