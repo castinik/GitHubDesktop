@@ -16,3 +16,4 @@ C:\Users\Utente\Documents\GitHub\GitHubDesktop\obj\Debug\net5.0-windows\GitHubDe
 C:\Users\Utente\Documents\GitHub\GitHubDesktop\obj\Debug\net5.0-windows\ref\GitHubDesktop.dll
 C:\Users\Utente\Documents\GitHub\GitHubDesktop\obj\Debug\net5.0-windows\GitHubDesktop.pdb
 C:\Users\Utente\Documents\GitHub\GitHubDesktop\obj\Debug\net5.0-windows\GitHubDesktop.genruntimeconfig.cache
+C:\Users\Utente\Documents\GitHub\GitHubDesktop\obj\Debug\net5.0-windows\GitHubDesktop.Properties.Resources.resources

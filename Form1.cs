@@ -65,11 +65,9 @@ namespace GitHubDesktop
         public string PrintStatus(Process process, bool print)
         {
             string outp = "";
-            string err = "";
             while (!process.HasExited)
             {
                 outp += process.StandardOutput.ReadToEnd();
-
             }
             if (print)
             {
@@ -202,6 +200,7 @@ namespace GitHubDesktop
         }
         private void SelectFileButton_Click(object sender, EventArgs e)
         {
+            if (!CheckWorkingArea() || !CheckInit()) return;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 FileSelectedLabel.Text = openFileDialog1.SafeFileName;

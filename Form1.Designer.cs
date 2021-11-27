@@ -29,6 +29,7 @@ namespace GitHubDesktop
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.StatusButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.WorkingDirectoryLabel = new System.Windows.Forms.Label();
@@ -109,34 +110,40 @@ namespace GitHubDesktop
             // 
             // StatusButton
             // 
-            this.StatusButton.Location = new System.Drawing.Point(2, 422);
+            this.StatusButton.BackColor = System.Drawing.Color.MediumPurple;
+            this.StatusButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.StatusButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.StatusButton.Location = new System.Drawing.Point(2, 420);
             this.StatusButton.Name = "StatusButton";
-            this.StatusButton.Size = new System.Drawing.Size(795, 23);
+            this.StatusButton.Size = new System.Drawing.Size(795, 27);
             this.StatusButton.TabIndex = 0;
             this.StatusButton.Text = "Verify the git repository status";
-            this.StatusButton.UseVisualStyleBackColor = true;
+            this.StatusButton.UseVisualStyleBackColor = false;
             this.StatusButton.Click += new System.EventHandler(this.StatusButton_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(350, 221);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(337, 221);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 15);
+            this.label1.Size = new System.Drawing.Size(125, 19);
             this.label1.TabIndex = 4;
             this.label1.Text = "Status operations";
             // 
             // WorkingDirectoryLabel
             // 
             this.WorkingDirectoryLabel.AutoSize = true;
-            this.WorkingDirectoryLabel.Location = new System.Drawing.Point(2, 5);
+            this.WorkingDirectoryLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.WorkingDirectoryLabel.Location = new System.Drawing.Point(4, 4);
             this.WorkingDirectoryLabel.Name = "WorkingDirectoryLabel";
-            this.WorkingDirectoryLabel.Size = new System.Drawing.Size(277, 15);
+            this.WorkingDirectoryLabel.Size = new System.Drawing.Size(323, 19);
             this.WorkingDirectoryLabel.TabIndex = 6;
             this.WorkingDirectoryLabel.Text = "Please choose a working directory in Set Repository";
             // 
             // DisplayStatus
             // 
+            this.DisplayStatus.BackColor = System.Drawing.Color.Thistle;
             this.DisplayStatus.Location = new System.Drawing.Point(2, 243);
             this.DisplayStatus.Name = "DisplayStatus";
             this.DisplayStatus.ReadOnly = true;
@@ -157,6 +164,7 @@ namespace GitHubDesktop
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.MediumPurple;
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.UserNameLabel);
@@ -166,9 +174,10 @@ namespace GitHubDesktop
             this.groupBox1.Controls.Add(this.StatusInitLabel);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.InitIndicator);
-            this.groupBox1.Location = new System.Drawing.Point(584, 37);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Location = new System.Drawing.Point(584, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 181);
+            this.groupBox1.Size = new System.Drawing.Size(200, 168);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Status panel";
@@ -176,85 +185,92 @@ namespace GitHubDesktop
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(20, 102);
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(14, 100);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 15);
+            this.label17.Size = new System.Drawing.Size(84, 19);
             this.label17.TabIndex = 17;
             this.label17.Text = "User email:";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(20, 67);
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(14, 65);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(69, 15);
+            this.label16.Size = new System.Drawing.Size(88, 19);
             this.label16.TabIndex = 16;
             this.label16.Text = "User name: ";
             // 
             // UserNameLabel
             // 
             this.UserNameLabel.AutoSize = true;
-            this.UserNameLabel.Location = new System.Drawing.Point(85, 67);
+            this.UserNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UserNameLabel.Location = new System.Drawing.Point(100, 69);
             this.UserNameLabel.Name = "UserNameLabel";
-            this.UserNameLabel.Size = new System.Drawing.Size(34, 15);
+            this.UserNameLabel.Size = new System.Drawing.Size(34, 13);
             this.UserNameLabel.TabIndex = 6;
             this.UserNameLabel.Text = ". . . . .";
             // 
             // UserEmailLabel
             // 
             this.UserEmailLabel.AutoSize = true;
-            this.UserEmailLabel.Location = new System.Drawing.Point(85, 102);
+            this.UserEmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UserEmailLabel.Location = new System.Drawing.Point(96, 104);
             this.UserEmailLabel.Name = "UserEmailLabel";
-            this.UserEmailLabel.Size = new System.Drawing.Size(34, 15);
+            this.UserEmailLabel.Size = new System.Drawing.Size(34, 13);
             this.UserEmailLabel.TabIndex = 5;
             this.UserEmailLabel.Text = ". . . . .";
             // 
             // StatusBranchNameLabel
             // 
             this.StatusBranchNameLabel.AutoSize = true;
-            this.StatusBranchNameLabel.Location = new System.Drawing.Point(120, 29);
+            this.StatusBranchNameLabel.Location = new System.Drawing.Point(124, 29);
             this.StatusBranchNameLabel.Name = "StatusBranchNameLabel";
-            this.StatusBranchNameLabel.Size = new System.Drawing.Size(34, 15);
+            this.StatusBranchNameLabel.Size = new System.Drawing.Size(40, 19);
             this.StatusBranchNameLabel.TabIndex = 4;
             this.StatusBranchNameLabel.Text = ". . . . .";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(20, 29);
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(14, 29);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(93, 15);
+            this.label13.Size = new System.Drawing.Size(117, 19);
             this.label13.TabIndex = 3;
             this.label13.Text = "Current branch: ";
             // 
             // StatusInitLabel
             // 
             this.StatusInitLabel.AutoSize = true;
-            this.StatusInitLabel.Location = new System.Drawing.Point(82, 136);
+            this.StatusInitLabel.Location = new System.Drawing.Point(66, 134);
             this.StatusInitLabel.Name = "StatusInitLabel";
-            this.StatusInitLabel.Size = new System.Drawing.Size(34, 15);
+            this.StatusInitLabel.Size = new System.Drawing.Size(40, 19);
             this.StatusInitLabel.TabIndex = 2;
             this.StatusInitLabel.Text = ". . . . .";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(49, 136);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(34, 134);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(30, 15);
+            this.label12.Size = new System.Drawing.Size(38, 19);
             this.label12.TabIndex = 1;
             this.label12.Text = "Init: ";
             // 
             // InitIndicator
             // 
             this.InitIndicator.BackColor = System.Drawing.Color.White;
-            this.InitIndicator.Location = new System.Drawing.Point(20, 136);
+            this.InitIndicator.Location = new System.Drawing.Point(14, 134);
             this.InitIndicator.Name = "InitIndicator";
             this.InitIndicator.Size = new System.Drawing.Size(15, 15);
             this.InitIndicator.TabIndex = 0;
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.MediumPurple;
             this.tabPage2.Controls.Add(this.UserEmailTextBox);
             this.tabPage2.Controls.Add(this.UserNameTextBox);
             this.tabPage2.Controls.Add(this.label15);
@@ -272,20 +288,23 @@ namespace GitHubDesktop
             this.tabPage2.Size = new System.Drawing.Size(560, 167);
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "Set User";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // UserEmailTextBox
             // 
-            this.UserEmailTextBox.Location = new System.Drawing.Point(94, 58);
+            this.UserEmailTextBox.BackColor = System.Drawing.Color.Thistle;
+            this.UserEmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UserEmailTextBox.Location = new System.Drawing.Point(74, 58);
             this.UserEmailTextBox.Name = "UserEmailTextBox";
-            this.UserEmailTextBox.Size = new System.Drawing.Size(459, 23);
+            this.UserEmailTextBox.Size = new System.Drawing.Size(479, 23);
             this.UserEmailTextBox.TabIndex = 18;
             // 
             // UserNameTextBox
             // 
-            this.UserNameTextBox.Location = new System.Drawing.Point(94, 31);
+            this.UserNameTextBox.BackColor = System.Drawing.Color.Thistle;
+            this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UserNameTextBox.Location = new System.Drawing.Point(74, 32);
             this.UserNameTextBox.Name = "UserNameTextBox";
-            this.UserNameTextBox.Size = new System.Drawing.Size(459, 23);
+            this.UserNameTextBox.Size = new System.Drawing.Size(479, 23);
             this.UserNameTextBox.TabIndex = 17;
             // 
             // label15
@@ -308,9 +327,11 @@ namespace GitHubDesktop
             // 
             // InitUserButton
             // 
+            this.InitUserButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.InitUserButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.InitUserButton.Location = new System.Drawing.Point(3, 4);
             this.InitUserButton.Name = "InitUserButton";
-            this.InitUserButton.Size = new System.Drawing.Size(550, 23);
+            this.InitUserButton.Size = new System.Drawing.Size(550, 25);
             this.InitUserButton.TabIndex = 14;
             this.InitUserButton.Text = "Initialize user";
             this.InitUserButton.UseVisualStyleBackColor = true;
@@ -318,9 +339,11 @@ namespace GitHubDesktop
             // 
             // ViewSurgentButton
             // 
-            this.ViewSurgentButton.Location = new System.Drawing.Point(3, 140);
+            this.ViewSurgentButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ViewSurgentButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ViewSurgentButton.Location = new System.Drawing.Point(3, 136);
             this.ViewSurgentButton.Name = "ViewSurgentButton";
-            this.ViewSurgentButton.Size = new System.Drawing.Size(550, 23);
+            this.ViewSurgentButton.Size = new System.Drawing.Size(550, 25);
             this.ViewSurgentButton.TabIndex = 13;
             this.ViewSurgentButton.Text = "View all surgent remote";
             this.ViewSurgentButton.UseVisualStyleBackColor = true;
@@ -346,23 +369,29 @@ namespace GitHubDesktop
             // 
             // UrlRemoteTextBox
             // 
-            this.UrlRemoteTextBox.Location = new System.Drawing.Point(200, 113);
+            this.UrlRemoteTextBox.BackColor = System.Drawing.Color.Thistle;
+            this.UrlRemoteTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UrlRemoteTextBox.Location = new System.Drawing.Point(200, 110);
             this.UrlRemoteTextBox.Name = "UrlRemoteTextBox";
             this.UrlRemoteTextBox.Size = new System.Drawing.Size(353, 23);
             this.UrlRemoteTextBox.TabIndex = 11;
             // 
             // AddNameRemoteTextBox
             // 
-            this.AddNameRemoteTextBox.Location = new System.Drawing.Point(321, 85);
+            this.AddNameRemoteTextBox.BackColor = System.Drawing.Color.Thistle;
+            this.AddNameRemoteTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AddNameRemoteTextBox.Location = new System.Drawing.Point(321, 84);
             this.AddNameRemoteTextBox.Name = "AddNameRemoteTextBox";
             this.AddNameRemoteTextBox.Size = new System.Drawing.Size(232, 23);
             this.AddNameRemoteTextBox.TabIndex = 9;
             // 
             // AddSurgentButton
             // 
-            this.AddSurgentButton.Location = new System.Drawing.Point(3, 84);
+            this.AddSurgentButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddSurgentButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.AddSurgentButton.Location = new System.Drawing.Point(3, 83);
             this.AddSurgentButton.Name = "AddSurgentButton";
-            this.AddSurgentButton.Size = new System.Drawing.Size(172, 23);
+            this.AddSurgentButton.Size = new System.Drawing.Size(172, 25);
             this.AddSurgentButton.TabIndex = 4;
             this.AddSurgentButton.Text = "Add surgent remote url";
             this.AddSurgentButton.UseVisualStyleBackColor = true;
@@ -370,6 +399,7 @@ namespace GitHubDesktop
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.MediumPurple;
             this.tabPage1.Controls.Add(this.DeleteBranchButton);
             this.tabPage1.Controls.Add(this.ChangeBranchButton);
             this.tabPage1.Controls.Add(this.ViewBranchButton);
@@ -390,13 +420,14 @@ namespace GitHubDesktop
             this.tabPage1.Size = new System.Drawing.Size(560, 167);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Set Repository";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // DeleteBranchButton
             // 
-            this.DeleteBranchButton.Location = new System.Drawing.Point(281, 83);
+            this.DeleteBranchButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteBranchButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.DeleteBranchButton.Location = new System.Drawing.Point(281, 82);
             this.DeleteBranchButton.Name = "DeleteBranchButton";
-            this.DeleteBranchButton.Size = new System.Drawing.Size(273, 23);
+            this.DeleteBranchButton.Size = new System.Drawing.Size(273, 25);
             this.DeleteBranchButton.TabIndex = 16;
             this.DeleteBranchButton.Text = "Delete a branch";
             this.DeleteBranchButton.UseVisualStyleBackColor = true;
@@ -404,9 +435,11 @@ namespace GitHubDesktop
             // 
             // ChangeBranchButton
             // 
-            this.ChangeBranchButton.Location = new System.Drawing.Point(3, 111);
+            this.ChangeBranchButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ChangeBranchButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ChangeBranchButton.Location = new System.Drawing.Point(3, 108);
             this.ChangeBranchButton.Name = "ChangeBranchButton";
-            this.ChangeBranchButton.Size = new System.Drawing.Size(230, 23);
+            this.ChangeBranchButton.Size = new System.Drawing.Size(230, 25);
             this.ChangeBranchButton.TabIndex = 15;
             this.ChangeBranchButton.Text = "Change branch";
             this.ChangeBranchButton.UseVisualStyleBackColor = true;
@@ -414,9 +447,11 @@ namespace GitHubDesktop
             // 
             // ViewBranchButton
             // 
-            this.ViewBranchButton.Location = new System.Drawing.Point(3, 138);
+            this.ViewBranchButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ViewBranchButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ViewBranchButton.Location = new System.Drawing.Point(3, 134);
             this.ViewBranchButton.Name = "ViewBranchButton";
-            this.ViewBranchButton.Size = new System.Drawing.Size(551, 23);
+            this.ViewBranchButton.Size = new System.Drawing.Size(551, 25);
             this.ViewBranchButton.TabIndex = 14;
             this.ViewBranchButton.Text = "View all branch";
             this.ViewBranchButton.UseVisualStyleBackColor = true;
@@ -424,6 +459,8 @@ namespace GitHubDesktop
             // 
             // BranchNameTextBox
             // 
+            this.BranchNameTextBox.BackColor = System.Drawing.Color.Thistle;
+            this.BranchNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BranchNameTextBox.Location = new System.Drawing.Point(413, 109);
             this.BranchNameTextBox.Name = "BranchNameTextBox";
             this.BranchNameTextBox.Size = new System.Drawing.Size(141, 23);
@@ -431,7 +468,9 @@ namespace GitHubDesktop
             // 
             // UrlCloneTextBox
             // 
-            this.UrlCloneTextBox.Location = new System.Drawing.Point(127, 55);
+            this.UrlCloneTextBox.BackColor = System.Drawing.Color.Thistle;
+            this.UrlCloneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UrlCloneTextBox.Location = new System.Drawing.Point(324, 57);
             this.UrlCloneTextBox.Name = "UrlCloneTextBox";
             this.UrlCloneTextBox.Size = new System.Drawing.Size(230, 23);
             this.UrlCloneTextBox.TabIndex = 8;
@@ -447,9 +486,11 @@ namespace GitHubDesktop
             // 
             // NewBranchButton
             // 
-            this.NewBranchButton.Location = new System.Drawing.Point(3, 84);
+            this.NewBranchButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NewBranchButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.NewBranchButton.Location = new System.Drawing.Point(3, 82);
             this.NewBranchButton.Name = "NewBranchButton";
-            this.NewBranchButton.Size = new System.Drawing.Size(272, 23);
+            this.NewBranchButton.Size = new System.Drawing.Size(272, 25);
             this.NewBranchButton.TabIndex = 11;
             this.NewBranchButton.Text = "Create new branch";
             this.NewBranchButton.UseVisualStyleBackColor = true;
@@ -458,7 +499,7 @@ namespace GitHubDesktop
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 58);
+            this.label10.Location = new System.Drawing.Point(194, 60);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(124, 15);
             this.label10.TabIndex = 10;
@@ -467,7 +508,7 @@ namespace GitHubDesktop
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(360, 58);
+            this.label7.Location = new System.Drawing.Point(3, 60);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 15);
             this.label7.TabIndex = 9;
@@ -485,7 +526,7 @@ namespace GitHubDesktop
             // InitLabel
             // 
             this.InitLabel.AutoSize = true;
-            this.InitLabel.Location = new System.Drawing.Point(446, 58);
+            this.InitLabel.Location = new System.Drawing.Point(89, 60);
             this.InitLabel.Name = "InitLabel";
             this.InitLabel.Size = new System.Drawing.Size(36, 15);
             this.InitLabel.TabIndex = 6;
@@ -493,9 +534,11 @@ namespace GitHubDesktop
             // 
             // InitButton
             // 
-            this.InitButton.Location = new System.Drawing.Point(281, 28);
+            this.InitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.InitButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.InitButton.Location = new System.Drawing.Point(3, 30);
             this.InitButton.Name = "InitButton";
-            this.InitButton.Size = new System.Drawing.Size(273, 23);
+            this.InitButton.Size = new System.Drawing.Size(273, 25);
             this.InitButton.TabIndex = 5;
             this.InitButton.Text = "Init";
             this.InitButton.UseVisualStyleBackColor = true;
@@ -503,9 +546,11 @@ namespace GitHubDesktop
             // 
             // BrowseButton
             // 
+            this.BrowseButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.BrowseButton.Location = new System.Drawing.Point(281, 3);
             this.BrowseButton.Name = "BrowseButton";
-            this.BrowseButton.Size = new System.Drawing.Size(273, 23);
+            this.BrowseButton.Size = new System.Drawing.Size(273, 25);
             this.BrowseButton.TabIndex = 2;
             this.BrowseButton.Text = "Browse";
             this.BrowseButton.UseVisualStyleBackColor = true;
@@ -513,9 +558,11 @@ namespace GitHubDesktop
             // 
             // CloneButton
             // 
-            this.CloneButton.Location = new System.Drawing.Point(3, 28);
+            this.CloneButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloneButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.CloneButton.Location = new System.Drawing.Point(281, 30);
             this.CloneButton.Name = "CloneButton";
-            this.CloneButton.Size = new System.Drawing.Size(272, 23);
+            this.CloneButton.Size = new System.Drawing.Size(273, 25);
             this.CloneButton.TabIndex = 3;
             this.CloneButton.Text = "Clone";
             this.CloneButton.UseVisualStyleBackColor = true;
@@ -523,6 +570,7 @@ namespace GitHubDesktop
             // 
             // StagePage
             // 
+            this.StagePage.BackColor = System.Drawing.Color.MediumPurple;
             this.StagePage.Controls.Add(this.panel2);
             this.StagePage.Location = new System.Drawing.Point(4, 24);
             this.StagePage.Name = "StagePage";
@@ -530,7 +578,6 @@ namespace GitHubDesktop
             this.StagePage.Size = new System.Drawing.Size(560, 167);
             this.StagePage.TabIndex = 1;
             this.StagePage.Text = "Set Stage Git";
-            this.StagePage.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -540,7 +587,7 @@ namespace GitHubDesktop
             this.panel2.Controls.Add(this.AddFileButton);
             this.panel2.Controls.Add(this.AddAllButton);
             this.panel2.Controls.Add(this.RemoveFileButton);
-            this.panel2.Location = new System.Drawing.Point(4, 42);
+            this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(554, 87);
             this.panel2.TabIndex = 8;
@@ -556,9 +603,11 @@ namespace GitHubDesktop
             // 
             // SelectFileButton
             // 
+            this.SelectFileButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SelectFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.SelectFileButton.Location = new System.Drawing.Point(3, 57);
             this.SelectFileButton.Name = "SelectFileButton";
-            this.SelectFileButton.Size = new System.Drawing.Size(139, 23);
+            this.SelectFileButton.Size = new System.Drawing.Size(139, 25);
             this.SelectFileButton.TabIndex = 6;
             this.SelectFileButton.Text = "Select a file";
             this.SelectFileButton.UseVisualStyleBackColor = true;
@@ -574,9 +623,11 @@ namespace GitHubDesktop
             // 
             // AddFileButton
             // 
+            this.AddFileButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddFileButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.AddFileButton.Location = new System.Drawing.Point(3, 30);
             this.AddFileButton.Name = "AddFileButton";
-            this.AddFileButton.Size = new System.Drawing.Size(269, 23);
+            this.AddFileButton.Size = new System.Drawing.Size(269, 25);
             this.AddFileButton.TabIndex = 2;
             this.AddFileButton.Text = "Add file";
             this.AddFileButton.UseVisualStyleBackColor = true;
@@ -584,9 +635,11 @@ namespace GitHubDesktop
             // 
             // AddAllButton
             // 
+            this.AddAllButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddAllButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.AddAllButton.Location = new System.Drawing.Point(3, 4);
             this.AddAllButton.Name = "AddAllButton";
-            this.AddAllButton.Size = new System.Drawing.Size(548, 23);
+            this.AddAllButton.Size = new System.Drawing.Size(548, 25);
             this.AddAllButton.TabIndex = 3;
             this.AddAllButton.Text = "Add all";
             this.AddAllButton.UseVisualStyleBackColor = true;
@@ -594,9 +647,10 @@ namespace GitHubDesktop
             // 
             // RemoveFileButton
             // 
+            this.RemoveFileButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RemoveFileButton.Location = new System.Drawing.Point(278, 30);
             this.RemoveFileButton.Name = "RemoveFileButton";
-            this.RemoveFileButton.Size = new System.Drawing.Size(273, 23);
+            this.RemoveFileButton.Size = new System.Drawing.Size(273, 25);
             this.RemoveFileButton.TabIndex = 4;
             this.RemoveFileButton.Text = "Remove file";
             this.RemoveFileButton.UseVisualStyleBackColor = true;
@@ -604,19 +658,22 @@ namespace GitHubDesktop
             // 
             // UseGitPage
             // 
+            this.UseGitPage.BackColor = System.Drawing.Color.MediumPurple;
             this.UseGitPage.Controls.Add(this.panel3);
             this.UseGitPage.Controls.Add(this.panel1);
             this.UseGitPage.Controls.Add(this.FileToChangeLabel);
+            this.UseGitPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UseGitPage.Location = new System.Drawing.Point(4, 24);
             this.UseGitPage.Name = "UseGitPage";
             this.UseGitPage.Padding = new System.Windows.Forms.Padding(3);
             this.UseGitPage.Size = new System.Drawing.Size(560, 167);
             this.UseGitPage.TabIndex = 0;
             this.UseGitPage.Text = "Use Git";
-            this.UseGitPage.UseVisualStyleBackColor = true;
+            this.UseGitPage.ToolTipText = "Use this section to execute the commit and push or pull a repository.";
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.MediumPurple;
             this.panel3.Controls.Add(this.SurgentTextBox);
             this.panel3.Controls.Add(this.PushButton);
             this.panel3.Controls.Add(this.PullButton);
@@ -630,6 +687,8 @@ namespace GitHubDesktop
             // 
             // SurgentTextBox
             // 
+            this.SurgentTextBox.BackColor = System.Drawing.Color.Thistle;
+            this.SurgentTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SurgentTextBox.Location = new System.Drawing.Point(319, 50);
             this.SurgentTextBox.Name = "SurgentTextBox";
             this.SurgentTextBox.Size = new System.Drawing.Size(232, 23);
@@ -637,9 +696,11 @@ namespace GitHubDesktop
             // 
             // PushButton
             // 
+            this.PushButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PushButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.PushButton.Location = new System.Drawing.Point(3, 14);
             this.PushButton.Name = "PushButton";
-            this.PushButton.Size = new System.Drawing.Size(274, 23);
+            this.PushButton.Size = new System.Drawing.Size(274, 25);
             this.PushButton.TabIndex = 0;
             this.PushButton.Text = "Push";
             this.PushButton.UseVisualStyleBackColor = true;
@@ -647,9 +708,11 @@ namespace GitHubDesktop
             // 
             // PullButton
             // 
+            this.PullButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PullButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.PullButton.Location = new System.Drawing.Point(277, 14);
             this.PullButton.Name = "PullButton";
-            this.PullButton.Size = new System.Drawing.Size(274, 23);
+            this.PullButton.Size = new System.Drawing.Size(274, 25);
             this.PullButton.TabIndex = 1;
             this.PullButton.Text = "Pull";
             this.PullButton.UseVisualStyleBackColor = true;
@@ -657,7 +720,9 @@ namespace GitHubDesktop
             // 
             // BranchTextBox
             // 
-            this.BranchTextBox.Location = new System.Drawing.Point(50, 48);
+            this.BranchTextBox.BackColor = System.Drawing.Color.Thistle;
+            this.BranchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BranchTextBox.Location = new System.Drawing.Point(52, 51);
             this.BranchTextBox.Name = "BranchTextBox";
             this.BranchTextBox.Size = new System.Drawing.Size(209, 23);
             this.BranchTextBox.TabIndex = 4;
@@ -682,6 +747,7 @@ namespace GitHubDesktop
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.MediumPurple;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.CommitButton);
             this.panel1.Controls.Add(this.CommitTextBox);
@@ -695,25 +761,31 @@ namespace GitHubDesktop
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 15);
+            this.label2.Size = new System.Drawing.Size(181, 15);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Add a comment before commit";
+            this.label2.Text = "Add a comment before commit: ";
             // 
             // CommitButton
             // 
-            this.CommitButton.Location = new System.Drawing.Point(3, 9);
+            this.CommitButton.BackColor = System.Drawing.Color.Gray;
+            this.CommitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CommitButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.CommitButton.Location = new System.Drawing.Point(3, 6);
             this.CommitButton.Name = "CommitButton";
-            this.CommitButton.Size = new System.Drawing.Size(548, 23);
+            this.CommitButton.Size = new System.Drawing.Size(548, 25);
             this.CommitButton.TabIndex = 2;
             this.CommitButton.Text = "Commit";
-            this.CommitButton.UseVisualStyleBackColor = true;
+            this.CommitButton.UseVisualStyleBackColor = false;
             this.CommitButton.Click += new System.EventHandler(this.CommitButton_Click);
             // 
             // CommitTextBox
             // 
-            this.CommitTextBox.Location = new System.Drawing.Point(184, 38);
+            this.CommitTextBox.BackColor = System.Drawing.Color.Thistle;
+            this.CommitTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CommitTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CommitTextBox.Location = new System.Drawing.Point(190, 37);
             this.CommitTextBox.Name = "CommitTextBox";
-            this.CommitTextBox.Size = new System.Drawing.Size(367, 23);
+            this.CommitTextBox.Size = new System.Drawing.Size(361, 25);
             this.CommitTextBox.TabIndex = 5;
             // 
             // FileToChangeLabel
@@ -730,7 +802,9 @@ namespace GitHubDesktop
             this.tabControl1.Controls.Add(this.StagePage);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(2, 23);
+            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tabControl1.Location = new System.Drawing.Point(3, 26);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(568, 195);
@@ -740,6 +814,8 @@ namespace GitHubDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.MediumPurple;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.WorkingDirectoryLabel);
@@ -747,6 +823,10 @@ namespace GitHubDesktop
             this.Controls.Add(this.DisplayStatus);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.StatusButton);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(816, 489);
+            this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Form1";
             this.Text = "GitHubDesktop";
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
