@@ -191,7 +191,7 @@ namespace GitHubDesktop
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(16, 133);
+            this.label17.Location = new System.Drawing.Point(7, 133);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(99, 23);
             this.label17.TabIndex = 17;
@@ -201,7 +201,7 @@ namespace GitHubDesktop
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(16, 87);
+            this.label16.Location = new System.Drawing.Point(7, 87);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(104, 23);
             this.label16.TabIndex = 16;
@@ -240,7 +240,7 @@ namespace GitHubDesktop
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(16, 39);
+            this.label13.Location = new System.Drawing.Point(7, 39);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(141, 23);
             this.label13.TabIndex = 3;
@@ -259,7 +259,7 @@ namespace GitHubDesktop
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(39, 179);
+            this.label12.Location = new System.Drawing.Point(30, 179);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(47, 23);
             this.label12.TabIndex = 1;
@@ -268,7 +268,7 @@ namespace GitHubDesktop
             // InitIndicator
             // 
             this.InitIndicator.BackColor = System.Drawing.Color.White;
-            this.InitIndicator.Location = new System.Drawing.Point(16, 179);
+            this.InitIndicator.Location = new System.Drawing.Point(9, 179);
             this.InitIndicator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.InitIndicator.Name = "InitIndicator";
             this.InitIndicator.Size = new System.Drawing.Size(17, 20);
