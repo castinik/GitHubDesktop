@@ -1,0 +1,5 @@
+D:\Programmi\MyPrograms\GitHubDesktop.exe
+D:\Programmi\MyPrograms\GitHubDesktop.dll
+D:\Programmi\MyPrograms\GitHubDesktop.deps.json
+D:\Programmi\MyPrograms\GitHubDesktop.runtimeconfig.json
+D:\Programmi\MyPrograms\GitHubDesktop.pdb
